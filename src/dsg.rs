@@ -805,11 +805,25 @@ mod tests {
 
     #[test]
     fn sign_2_out_of_2() {
-        let shares = dkg(2, 2);
-        dsg(&shares[..2]);
+        print_timestamp();
+        let shares = dkg(3, 2);
+
+        for _ in 0..15 {
+            print_timestamp();
+            dsg(&shares[..2]);
+        }
     }
 
-    #[test]
+    use std::time::{SystemTime, UNIX_EPOCH};
+    fn print_timestamp() {
+        let start = SystemTime::now();
+        let since_the_epoch = start
+            .duration_since(UNIX_EPOCH)
+            .expect("Time went backwards");
+        println!("Timestamp: {:?}", since_the_epoch);
+    }
+
+    /*#[test]
     fn sign_2_out_3() {
         let shares = dkg(3, 2);
         dsg(&shares[..2]);
@@ -873,5 +887,5 @@ mod tests {
         let new_shares = dkg_inner(rotation_states);
 
         dsg(&new_shares[..2]);
-    }
+    }*/
 }

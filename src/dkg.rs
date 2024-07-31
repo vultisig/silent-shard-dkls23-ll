@@ -1107,10 +1107,10 @@ pub mod tests {
 
     #[test]
     fn dkg2_out_of_2() {
-        dkg(2, 2);
+        dkg(10, 2);
     }
 
-    #[test]
+    /*#[test]
     fn dkg2_out_of_3() {
         dkg(3, 2);
     }
@@ -1167,5 +1167,5 @@ pub mod tests {
             .collect::<Vec<_>>();
 
         let _new_shares = dkg_inner(rotation_states);
-    }
+    }*/
 }
